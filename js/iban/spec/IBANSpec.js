@@ -1,5 +1,5 @@
 describe('IBAN', function(){
-	describe('.isValid', function(){
+	describe('isValid()', function(){
 		
 		it('should return false for an unknown country code digit', function(){
 			expect(isValid('ZZ68539007547034')).toBe(false);
@@ -48,5 +48,11 @@ describe('IBAN', function(){
 		});
 
 	});
+
+	describe('isValid()', function(){
+		it('should throw an error for string parameter', function(){
+			expect(Prepare(1233456)).toThrow();
+		});
+	});	
 });
 
