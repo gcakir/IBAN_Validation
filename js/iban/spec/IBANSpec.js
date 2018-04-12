@@ -60,7 +60,7 @@ describe('IBAN', function(){
 			}).toThrow("wrong type: expecting string, found object");
 		});
 
-		it('should throw an error for number parameter', function(){
+		it('should throw an error for boolean parameter', function(){
 			expect(function () {  Prepare(true); } ).toThrow("wrong type: expecting string, found boolean");
 		});
 
@@ -77,7 +77,7 @@ describe('IBAN', function(){
 			}).toThrow("wrong type: expecting string, found object");
 		});
 
-		it('should throw an error for number parameter', function(){
+		it('should throw an error for boolean parameter', function(){
 			expect(function () {  Mod97_10(true); } ).toThrow("wrong type: expecting string, found boolean");
 		});
 

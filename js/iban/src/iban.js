@@ -11,17 +11,12 @@ function Prepare(iban) {
 	if (typeof iban !== "string"){
 		throw "wrong type: expecting string, found " + typeof iban;
 	}
-	
 	iban = iban.replace(/\s/g, '');
 	if(!iban.match(/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}/i)){
-		console.log("failure");
+		console.log("Failure: Invalid IBAN");
 		return "2";
 	}
 
-	// if(!iban.match(/^[a-z0-9]+$/i)){
-	// 	console.log("failure");
-	// 	return "2";
-	// }
 	iban = iban.toUpperCase();
 	iban = iban.substr(4) + iban.substr(0,4);
 	
