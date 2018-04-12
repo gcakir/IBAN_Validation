@@ -2,6 +2,7 @@
 body {
 	padding-top: 20px;
 	padding-bottom: 20px;
+
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -76,4 +77,24 @@ body {
 	.jumbotron {
 		border-bottom: 0;
 	}
+}
+
+#CountryCode, #TwoDigits {
+	width: 70px;
+	float: left;
+	margin-right: 20px;
+	/*display: inline-block;*/
+}
+
+#Rest {
+	width: 400px;
+	/*display: inline-block;*/
+}
+
+div label {
+    display: block;
+}
+
+div IBAN-Seperate {
+    display: block;
 }
