@@ -49,10 +49,38 @@ describe('IBAN', function(){
 
 	});
 
-	describe('isValid()', function(){
-		it('should throw an error for string parameter', function(){
-			expect(Prepare(1233456)).toThrow();
+	describe('Prepare()', function(){
+		it('should throw an error for number parameter', function(){
+			expect(function () {  Prepare(123456); } ).toThrow("wrong type: expecting string, found number");
 		});
+
+		it('should throw an error for array parameter', function(){
+			expect(function () { 
+				Prepare([1,2,3]);
+			}).toThrow("wrong type: expecting string, found object");
+		});
+
+		it('should throw an error for number parameter', function(){
+			expect(function () {  Prepare(true); } ).toThrow("wrong type: expecting string, found boolean");
+		});
+
 	});	
+
+	describe('Mod97_10()', function(){
+		it('should throw an error for number parameter', function(){
+			expect(function () {  Mod97_10(123456); } ).toThrow("wrong type: expecting string, found number");
+		});
+
+		it('should throw an error for array parameter', function(){
+			expect(function () { 
+				Mod97_10([1,2,3]);
+			}).toThrow("wrong type: expecting string, found object");
+		});
+
+		it('should throw an error for number parameter', function(){
+			expect(function () {  Mod97_10(true); } ).toThrow("wrong type: expecting string, found boolean");
+		});
+
+	});
 });
 

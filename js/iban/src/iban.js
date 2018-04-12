@@ -1,41 +1,3 @@
-function typeOf(value) {
-	var s = typeof value;
-	if (s === 'object') {
-		if (value) {
-			if (Object.prototype.toString.call(value) == '[object Array]') {
-				s = 'array';
-			}
-		} else {
-			s = 'null';
-		}
-	}
-	return s;
-}
-
-/*
-
-function test(a, b, c) {
-    checkTypes(arguments, ["array", "object", "number"]);
-    out("finished type checking - no errors<br><br>");
-}
-
-try {
-    test([1,2,3], {test: "foo"}, 4);
-    test(3, {test: "foo"}, 4);
-} catch(e) {
-    out("***" + e);
-}
-
-*/
-
-function checkTypes(arg, typeList) {
-	for (var i = 0; i < typeList.length; i++) {
-		if (typeOf(arg) !== typeList[i]) {
-			throw 'wrong type: expecting ' + typeList[i] + ", found " + typeOf(argList[i]);
-		}
-	}
-}
-
 /*  *
 	* Prepare an IBAN for mod 97 computation by moving the first 4 chars to the end and
 	* transforming the letters to
@@ -45,11 +7,21 @@ function checkTypes(arg, typeList) {
 */
 
 function Prepare(iban) {
-	if (typeOf(iban) !== "string"){
-		throw "wrong type: expecting string, found " + typeOf(iban);
+	// console.log(typeof iban);
+	if (typeof iban !== "string"){
+		throw "wrong type: expecting string, found " + typeof iban;
+	}
+	
+	iban = iban.replace(/\s/g, '');
+	if(!iban.match(/^[a-zA-Z]{2}[0-9]{2}[a-zA-Z0-9]{4}[0-9]{7}([a-zA-Z0-9]?){0,16}/i)){
+		console.log("failure");
+		return "2";
 	}
 
-	iban = iban.replace(/\s/g, '');
+	// if(!iban.match(/^[a-z0-9]+$/i)){
+	// 	console.log("failure");
+	// 	return "2";
+	// }
 	iban = iban.toUpperCase();
 	iban = iban.substr(4) + iban.substr(0,4);
 	
@@ -72,6 +44,10 @@ function Prepare(iban) {
 	* @returns {number}
  */
 function Mod97_10(iban) {
+	if (typeof iban !== "string"){
+		throw "wrong type: expecting string, found " + typeof iban;
+	}
+
 	var remainder = iban,
 		block;
 
