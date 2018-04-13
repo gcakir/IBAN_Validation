@@ -41,6 +41,26 @@ describe('IBAN', function(){
 		it('should return true for valid British IBAN', function(){
 			expect(isValid('GB82WEST12345698765432')).toBe(true);
 		});
+
+		it('should return true for valid Polish IBAN', function(){
+			expect(isValid('PL61109010140000071219812874')).toBe(true);
+		});
+
+		it('should return true for valid Portuguese IBAN', function(){
+			expect(isValid('PT50000201231234567890154')).toBe(true);
+		});
+
+		it('should return true for valid Qatari IBAN', function(){
+			expect(isValid('QA58DOHB00001234567890ABCDEFG')).toBe(true);
+		});
+
+		it('should return true for valid Seychellois IBAN', function(){
+			expect(isValid('SC18SSCB11010000000000001497USD')).toBe(true);
+		});
+
+		it('should return true for valid Kosovar IBAN', function(){
+			expect(isValid('XK051212012345678906')).toBe(true);
+		});
 		
 		it('hahahah test', function(){
 			var x = true;

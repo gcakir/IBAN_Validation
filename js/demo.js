@@ -33,11 +33,20 @@ $(document).ready(function(){
 		this.value = this.value.toUpperCase();
 	});
 
-	// $("input").change(function() {
-	// 	if (this.value.length == this.maxLength) {
-	// 		$(this).next('.inputs').focus();
-	// 	}
-	// });
+	$("#CountryCode, #TwoDigits").on('keyup keydown keypress', function(e) {
 
+		// if (event.which !== 16 ) {alert(event.which)} // why is this giving two different event.which values?
+		if ( e.type === "keyup"  ) {
+			if ( !(e.shiftKey) && (event.which !== 16) ) {
+				if (!(e.key === 'Tab')) {
+					if( $(this).val().length==$(this).attr('maxlength') ){
+					// var inputs = $(this).closest('form-group').find(':input'); // won't work. Why?
+					// inputs.eq(100).focus();  // won't work. Why?
+						$(this).next().focus(); // works fine
+					}
+				}
+			}
+		}
+   	});
 });
 
