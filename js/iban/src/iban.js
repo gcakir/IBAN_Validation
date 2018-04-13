@@ -12,6 +12,19 @@ function IBANRegexVal(iban){
 	}
 }
 
+function ConvertToInt(iban){
+	return iban = iban.split('').map(function(n){
+		var code = n.charCodeAt(0);
+		var A = 'A'.charCodeAt(0),
+			Z = 'Z'.charCodeAt(0);
+		if (code >= A && code <= Z){
+			// A = 10, B = 11, ... Z = 35
+			return code - A + 10;
+		} else {
+			return n;
+		}
+	}).join('');
+}
 
 /*  *
 	* Prepare an IBAN for mod 97 computation by moving the first 4 chars to the end and
@@ -33,17 +46,7 @@ function Prepare(iban) {
 	iban = iban.toUpperCase();
 	iban = iban.substr(4) + iban.substr(0,4);
 	
-	return iban.split('').map(function(n){
-		var code = n.charCodeAt(0);
-		var A = 'A'.charCodeAt(0),
-			Z = 'Z'.charCodeAt(0);
-		if (code >= A && code <= Z){
-			// A = 10, B = 11, ... Z = 35
-			return code - A + 10;
-		} else {
-			return n;
-		}
-	}).join('');
+	return ConvertToInt(iban);
 }
 
 /*  *
@@ -87,7 +90,6 @@ function Prepare_For_GenerateCheckDigits(iban){
 	ibanFirst4 = ibanFirst4.split('').map(function(n){
 		var char = n.charCodeAt(0);
 		if (char >= '0'.charCodeAt(0) && char <= '9'.charCodeAt(0)){
-			// A = 10, B = 11, ... Z = 35
 			console.log("if executes");
 			return '0';
 		} else {
@@ -97,20 +99,8 @@ function Prepare_For_GenerateCheckDigits(iban){
 	}).join('');
 
 	iban = iban.substr(4) + ibanFirst4;
-
-	iban = iban.split('').map(function(n){
-		var code = n.charCodeAt(0);
-		var A = 'A'.charCodeAt(0),
-			Z = 'Z'.charCodeAt(0);
-		if (code >= A && code <= Z){
-			// A = 10, B = 11, ... Z = 35
-			return code - A + 10;
-		} else {
-			return n;
-		}
-	}).join('');
 	console.log("Prepare_For_GenerateCheckDigits: " + iban);
-	return iban;
+	return ConvertToInt(iban);
 }
 
 function GenerateCheckDigits(iban) {

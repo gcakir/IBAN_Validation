@@ -17,8 +17,14 @@ $(document).ready(function(){
 
 	$('#goBtn2').click(function() {
 		const val1 = $('#CountryCode').val();
-		const val2 = $('#TwoDigits').val();
 		const val3 = $('#Rest').val();
+		const val2 = $('#TwoDigits').val();
+		console.log("TwoDigits Length:" + $('#TwoDigits').length);
+		if ($('#TwoDigits').length === 0) {
+			var TwoDigits = GenerateCheckDigits(Prepare_For_GenerateCheckDigits(val1 + "00" + val3));
+			console.log("TwoDigits:" + TwoDigits);
+			$('#TwoDigits').val(TwoDigits);
+		}
 		var all = val1 + val2 +val3;
 		let html;
 		if (isValid(all)) {
@@ -49,5 +55,11 @@ $(document).ready(function(){
 			}
 		}
    	});
+
+	 $('#field_1').on('change', onchange
+
+
+	 );
+
 });
 
