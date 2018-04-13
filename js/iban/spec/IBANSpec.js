@@ -83,7 +83,6 @@ describe('IBAN', function(){
 		it('should throw an error for boolean parameter', function(){
 			expect(function () {  Prepare(true); } ).toThrow("wrong type: expecting string, found boolean");
 		});
-
 	});	
 
 	describe('Mod97_10()', function(){

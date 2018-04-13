@@ -12,6 +12,7 @@ $(document).ready(function(){
 		}
 		$('#results').html(html);
 		$('#results').show();
+		console.log(GenerateCheckDigits(Prepare_For_GenerateCheckDigits(val)));
 	});
 
 	$('#goBtn2').click(function() {

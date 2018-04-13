@@ -83,17 +83,22 @@ function Prepare_For_GenerateCheckDigits(iban){
 		return "2";
 	}
 	iban = iban.toUpperCase();
-	ibanFirst4 = iban.substr(0,4).split('').map(function(n){
+	var ibanFirst4 = iban.substr(0,4);
+	ibanFirst4 = ibanFirst4.split('').map(function(n){
 		var char = n.charCodeAt(0);
-		if (char >= '0' && char <= '9'){
+		if (char >= '0'.charCodeAt(0) && char <= '9'.charCodeAt(0)){
 			// A = 10, B = 11, ... Z = 35
+			console.log("if executes");
 			return '0';
 		} else {
+			console.log("else executes");
 			return n;
 		}
 	}).join('');
+
 	iban = iban.substr(4) + ibanFirst4;
-	return iban.split('').map(function(n){
+
+	iban = iban.split('').map(function(n){
 		var code = n.charCodeAt(0);
 		var A = 'A'.charCodeAt(0),
 			Z = 'Z'.charCodeAt(0);
@@ -104,6 +109,8 @@ function Prepare_For_GenerateCheckDigits(iban){
 			return n;
 		}
 	}).join('');
+	console.log("Prepare_For_GenerateCheckDigits: " + iban);
+	return iban;
 }
 
 function GenerateCheckDigits(iban) {
@@ -118,7 +125,7 @@ function GenerateCheckDigits(iban) {
 	}
 	var IntRemainder = parseInt(parseInt(remainder, 10) % 97);
 	var IntCheckDigits = 98 - IntRemainder;
-	var StrCheckDigits = IntCheckDigit.toString();
+	var StrCheckDigits = IntCheckDigits.toString();
 	if ( StrCheckDigits.length == 1) {
 		StrCheckDigits = "0" + StrCheckDigits;
 		return StrCheckDigits;
