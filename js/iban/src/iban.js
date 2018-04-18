@@ -73,10 +73,16 @@ function Mod97_10(iban) {
 	* and Mod97_10(iban) functions
 	* @param iban (the IBAN)
 	* @returns {boolean} true or false
- */
+*/
 function isValid(iban){
 	return Mod97_10(Prepare(iban)) == 1;
 }
+
+/*  *
+	* Prepares the passed IBAN for the function GenerateCheckDigits(iban)
+	* @param iban (the IBAN)
+	* @returns {string} the prepared IBAN
+*/
 
 function Prepare_For_GenerateCheckDigits(iban){
 	IBANtypeCheck(iban);
@@ -90,16 +96,16 @@ function Prepare_For_GenerateCheckDigits(iban){
 	ibanFirst4 = ibanFirst4.split('').map(function(n){
 		var char = n.charCodeAt(0);
 		if (char >= '0'.charCodeAt(0) && char <= '9'.charCodeAt(0)){
-			console.log("if executes");
+			// console.log("if executes");
 			return '0';
 		} else {
-			console.log("else executes");
+			// console.log("else executes");
 			return n;
 		}
 	}).join('');
 
 	iban = iban.substr(4) + ibanFirst4;
-	console.log("Prepare_For_GenerateCheckDigits: " + iban);
+	// console.log("Prepare_For_GenerateCheckDigits: " + iban);
 	return ConvertToInt(iban);
 }
 
@@ -113,10 +119,10 @@ function GenerateCheckDigits(iban) {
 		block = remainder.slice(0, 9);
 		remainder = parseInt(block, 10) % 97 + remainder.slice(block.length);
 	}
-	var IntRemainder = parseInt(parseInt(remainder, 10) % 97);
+	var IntRemainder = parseInt(remainder, 10) % 97;
 	var IntCheckDigits = 98 - IntRemainder;
 	var StrCheckDigits = IntCheckDigits.toString();
-	if ( StrCheckDigits.length == 1) {
+	if (StrCheckDigits.length == 1) {
 		StrCheckDigits = "0" + StrCheckDigits;
 		return StrCheckDigits;
 	}else{

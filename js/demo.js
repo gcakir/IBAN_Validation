@@ -12,18 +12,19 @@ $(document).ready(function(){
 		}
 		$('#results').html(html);
 		$('#results').show();
-		console.log(GenerateCheckDigits(Prepare_For_GenerateCheckDigits(val)));
+		// console.log(GenerateCheckDigits(Prepare_For_GenerateCheckDigits(val)));
 	});
 
 	$('#goBtn2').click(function() {
 		const val1 = $('#CountryCode').val();
 		const val3 = $('#Rest').val();
-		const val2 = $('#TwoDigits').val();
-		console.log("TwoDigits Length:" + $('#TwoDigits').length);
-		if ($('#TwoDigits').length === 0) {
+		var val2 = $('#TwoDigits').val();
+		// console.log("TwoDigits Length:" + $('#TwoDigits').length);
+		if (val2.length === 0) {
 			var TwoDigits = GenerateCheckDigits(Prepare_For_GenerateCheckDigits(val1 + "00" + val3));
 			console.log("TwoDigits:" + TwoDigits);
 			$('#TwoDigits').val(TwoDigits);
+			val2 = TwoDigits;
 		}
 		var all = val1 + val2 +val3;
 		let html;
@@ -55,11 +56,6 @@ $(document).ready(function(){
 			}
 		}
    	});
-
-	 $('#field_1').on('change', onchange
-
-
-	 );
 
 });
 
