@@ -10,8 +10,8 @@ $(document).ready(function(){
 		} else {
 		  html = '<h3><font color="red"><b>This IBAN is INVALID!</b></font></h3>';
 		}
-		$('#results').html(html);
-		$('#results').show();
+		$('#results_adjoining').html(html);
+		$('#results_adjoining').show();
 		// console.log(GenerateCheckDigits(Prepare_For_GenerateCheckDigits(val)));
 	});
 
@@ -33,8 +33,20 @@ $(document).ready(function(){
 		} else {
 		  html = '<h3><font color="red"><b>This IBAN is INVALID!</b></font></h3>';
 		}
-		$('#results').html(html);
-		$('#results').show();
+		$('#results_separate').html(html);
+		$('#results_separate').show();
+	});
+
+	$("#IBANComplete").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#goBtn1").click();
+		}
+	});
+
+	$("#CountryCode, #TwoDigits, #Rest").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#goBtn2").click();
+		}
 	});
 
 	$("#CountryCode").keyup(function(){
@@ -55,7 +67,7 @@ $(document).ready(function(){
 				}
 			}
 		}
-   	});
+	});
 
 });
 

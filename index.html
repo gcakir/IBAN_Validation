@@ -14,10 +14,7 @@
 	<link href="./css/jumbotron-narrow.css" rel="stylesheet">
 
 	<script src="./bower_components/jquery/dist/jquery.min.js"></script>
-
-	<script src="./bower_components/chai/chai.js"></script>
 	<script src="./js/iban/src/iban.js"></script>
-
 	<script src="./js/demo.js"></script>
 
   </head>
@@ -26,11 +23,6 @@
 
 	<div class="container">
 	  <div class="header clearfix">
-		<nav>
-			<ul class="nav nav-pills pull-right">
-
-			</ul>
-		</nav>
 		<h3 class="text-muted">iban.js</h3>
 	  </div>
 
@@ -41,6 +33,7 @@
 			<input type="text" class="form-control input-lg" id="IBANComplete" placeholder="Enter IBAN here">
 		</div>
 		<p><a id="goBtn1" class="btn btn-lg btn-success" role="button">Go!</a></p>
+		<span id="results_adjoining"></span>
 
 		<div class="form-group">
 			<label class="sr-only" for="CountryCode">CountryCode</label>
@@ -53,12 +46,10 @@
 			<input type="text" class="form-control input-lg" id="Rest">
 		</div>
 		<p><a id="goBtn2" class="btn btn-lg btn-success" role="button">Go!</a></p>
-
-		<span id="results"></span>
+		<span id="results_separate"></span>
 	  </div>
 
-	  <footer class="footer">
-	  </footer>
+	  <footer class="footer"></footer>
 
 	</div> <!-- /container -->
 

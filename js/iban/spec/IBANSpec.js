@@ -71,7 +71,9 @@ describe('IBAN', function(){
 
 	describe('Prepare()', function(){
 		it('should throw an error for number parameter', function(){
-			expect(function () {  Prepare(123456); } ).toThrow("wrong type: expecting string, found number");
+			expect(function () { 
+				Prepare(123456);
+			}).toThrow("wrong type: expecting string, found number");
 		});
 
 		it('should throw an error for array parameter', function(){
@@ -81,7 +83,9 @@ describe('IBAN', function(){
 		});
 
 		it('should throw an error for boolean parameter', function(){
-			expect(function () {  Prepare(true); } ).toThrow("wrong type: expecting string, found boolean");
+			expect(function () { 
+				Prepare(true); 
+			}).toThrow("wrong type: expecting string, found boolean");
 		});
 	});	
 
